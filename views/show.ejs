@@ -1,0 +1,23 @@
+<% include partials/header %>
+
+  <div class="ui segment">
+    <div class="ui grid container">
+      <div class="five wide column center aligned">
+        <div class="ui card">
+          <div class="image">
+            <img src="<%= movie.image %>">
+          </div>
+          <div class="content">
+            <div class="ui normal header">
+              <%= movie.title %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="eleven wide column">
+        <div class="ui embed float right" data-source="youtube" data-id="sdMLt0zP_zY" data-placeholder="https://img.youtube.com/vi/sdMLt0zP_zY/maxresdefault.jpg"></div>
+      </div>
+    </div>
+  </div>
+
+<% include partials/footer %>

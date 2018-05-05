@@ -1,0 +1,60 @@
+.movie-slider {
+  width: 850px;
+  margin: 0 auto;
+}
+
+.ui.grid>.row>.column.now-show {
+  padding-left: 1px;
+  padding-right: 1px;
+  display: -webkit-flex; /* Safari */
+    -webkit-flex-wrap: wrap; /* Safari 6.1+ */
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.ui.container.isi {
+  margin-top: 75px;
+}
+
+#nowplay {
+  margin: 40px auto;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+#cinemas {
+  text-align: center;
+}
+
+.cinemas{
+  width: 850px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.item.cinemas {
+  width: 85px;
+  height: 50px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  padding: auto auto;
+}
+
+.ui.horizontal.list>.item.cinemas {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  text-align: center;
+}
+.ui.horizontal.list:not(.celled)>.item.cinemas:first-child{
+  margin-left: 0.5rem!important;
+}
+
+
+.ui.cards {
+  margin: 0 1.6%;
+}
+
+.movie-title{
+  text-align: center;
+  font-size: 30px;
+}
