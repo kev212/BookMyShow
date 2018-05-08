@@ -20,4 +20,28 @@
     </div>
   </div>
 
+  <div class="ui segment">
+    <div class="schedule-title ui header">
+      <h2><strong>SCHEDULE</strong></h2>
+    </div>
+    <div class="ui header movie_title">
+      <i class="angle double right icon"></i><%= movie.title %>
+    </div>
+    <div class="schedule">
+      <div class="ui large list">
+         <div class="item">
+            <h3 class="ui header"><i class="right triangle icon"></i>2D Regular</h3>
+         </div>
+      </div>
+      <div class="ui large  horizontal divided link list showtime">
+        <% for(var i=0; i < movie.session.length; i++) { %>
+            <a class="item time-start" href="/select_seats/<%= movie.session[i]._id %>"
+            data-content="Rp. <%= movie.session[i].price %>"
+             data-position="top center"><strong><%= movie.session[i].showtime %></strong></a>
+        <% } %>
+
+    </div>
+  </div>
+</div>
+
 <% include partials/footer %>

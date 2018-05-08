@@ -58,3 +58,56 @@
   text-align: center;
   font-size: 30px;
 }
+
+.ui.list.showtime {
+  margin-top: 0em;
+}
+
+.seat_layout {
+  margin-top: 50px;
+  padding: 10px 5px;
+  text-align: center;
+}
+
+.ui.header.rowID {
+  margin-right: 10px;
+}
+
+.ui.horizontal.list>.item.seat:hover{
+  background: black;
+  color: white;
+  text-decoration: none;
+}
+
+
+.ui.horizontal.list>.item.seat {
+  font-size: 10px;
+  font-weight: bold;
+  color: grey;
+  border-color: black;
+  border-style: solid;
+  border-width: 1px;
+  margin-left: 0px;
+  margin-right: 0px;
+  width: 25px;
+  height: 22px;
+  text-align: center;
+  border-radius: 26%;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+
+#seat_list {
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+
+.booking_movie_image img {
+  height: 200px;
+}
+
+.chosen{
+  background: red!important;
+  color: white!important;
+}

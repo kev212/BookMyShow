@@ -3,3 +3,7 @@ $('.fluid.card .image').dimmer({
 });
 
 $('.ui.embed').embed();
+
+$('.time-start').popup({
+  on: 'hover'
+})

@@ -1,0 +1,108 @@
+<% include partials/header %>
+
+<div class="ui segment">
+
+  <div class="ui segment">
+    <div class="ui header center aligned">
+      SCREEN
+    </div>
+  </div>
+
+  <div class="seat_layout">
+  <% var k = session.seats[1].length%>
+    <% for(var i=0; i<session.seats.length; i++){ %>
+        <div class="ui mini horizontal list" id="seat_list">
+            <% for(var j=0; j< k; j++) { %>
+              <% if(session.seats[i][j] === 1) { %>
+                <a class="middle aligned disabled item seat" style="opacity:0" attr-code="<%=((session.seats.length-i)+9).toString(36)%><%= k-j %>" id="seat_<%=((session.seats.length-i)+9).toString(36)%><%= k-j %>">
+                  <%=((session.seats.length-i)+9).toString(36)%><%= k-j %>
+                </a>
+              <%} else { %>
+                <a style="vertical-align: middle" class="middle aligned item seat" attr-code="<%=((session.seats.length-i)+9).toString(36)%><%= k-j %>" href="javascript:void(0);" onclick="selectSeat('<%=((session.seats.length-i)+9).toString(36)%><%= k-j %>')" attr-row="<%=i%>" attr-col="<%=j%>" id="seat_<%=((session.seats.length-i)+9).toString(36)%><%= k-j %>">
+                  <%=((session.seats.length-i)+9).toString(36)%><%= k-j %>
+                </a>
+            <% }%>
+          <% } %>
+        </div>
+    <% } %>
+  </div>
+
+  <div class="ui horizontal segments">
+      <div class="ui segment">
+        <div class="booking_movie_image">
+          <img src="<%= session.movie.image %>">
+        </div>
+        <div class="ui small header">
+          <%= session.movie.title %>
+        </div>
+      </div>
+      <div class="ui segment">
+
+        <div class="ui list">
+          <div class="item">
+            Seats : <span class="seats-count">0</span>
+          </div>
+          <div class="item">
+            Seats No: <span class="seats-list">-</span>
+          </div>
+          <div class="item">
+            Total Rp <span class="seats-cost">0</span>,-
+          </div>
+        </div>
+
+        <form action="/book_now" method="POST">
+                <input type="hidden" name="ses_id" value="<%=session._id%>" />
+	              <input type="hidden" name="showdate" value="2018-05-08" />
+                <input type="hidden" name="cinema" value="017" />
+                <input type="hidden" name="seats" value="" />
+	              <input type="hidden" name="conce" value="1" />
+                <input type="submit" value="Next" class="seat-next" />
+            </form>
+      </div>
+  </div>
+
+</div>
+
+
+<script type="text/javascript">
+
+var seats = [];
+
+function selectSeat(code){
+  var seatSelector = $("a[attr-code='" + code + "']");
+  if(!seatSelector.hasClass('chosen')){
+    if(seats.length < 8){
+      seatSelector.addClass("chosen");
+      seatSelector.attr("onclick", "removeSeat('"+ code + "')");
+      seats.push(
+        {
+          seats : [ parseInt(seatSelector.attr("attr-row")), parseInt(seatSelector.attr("attr-col"))] 
+        }
+      );
+      $("input[name='seats']").val(JSON.stringify(seats));
+      //JSON.stringify(seats)
+      } else {
+        alert("You can choose maximum 8 seats.");
+      }
+    }
+  }
+
+function removeSeat(code) {
+	    var seatSelector = $("a[attr-code='" + code + "']");
+        if(seatSelector.hasClass('chosen')) {
+		        seatSelector.removeClass('chosen');
+		        seatSelector.attr('onclick', "selectSeat('" + code + "')");
+		        $.each(seats, function( index, value ) {
+			        for(key in value) {
+				        if(value.hasOwnProperty(key) && value[key] == seatSelector.attr("id")) {
+					        seats.splice(index, 1);
+				        }
+			        }
+		        });
+		        // updatePrice(seatSelector.attr("attr-price"), 'min');
+	        }
+        }
+
+</script>
+
+<% include partials/footer %>
